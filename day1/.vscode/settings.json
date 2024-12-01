@@ -1,0 +1,9 @@
+{
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.find.autoFindInSelection": "multiline",
+    "debug.disassemblyView.showSourceCode": false,
+    "window.zoomLevel": -1,
+    "zig.initialSetupDone": true,
+    "zig.formattingProvider": "zls",
+    "zig.zls.path": "C:/Users/tolla/AppData/Local/Microsoft/WinGet/Links/zls.exe"
+}
