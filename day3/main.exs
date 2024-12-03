@@ -26,10 +26,6 @@ defmodule FileReader do
 
   def part1(ops) do
     ops
-    |> Enum.filter(fn
-      {num1, num2} when num1 == -1 -> false
-      _ -> true
-    end)
     |> Enum.reduce(0, fn {num1, num2}, acc ->
       acc + num1 * num2
     end)
@@ -37,10 +33,6 @@ defmodule FileReader do
 
   def part2(ops) do
     ops
-    |> Enum.filter(fn
-      {num1} when num1 == 1 or num1 == 0 -> false
-      _ -> true
-    end)
     |> Enum.reduce({0, false}, fn {num1, num2}, {acc, skip} ->
       cond do
         num1 == 0 -> {acc, false}
@@ -58,9 +50,14 @@ end
 
 ops =
   FileReader.process_file(filename)
-  |> IO.inspect(label: "Operations: ")
 
-FileReader.part1(ops)
+FileReader.part1(
+  ops
+  |> Enum.filter(fn
+    {num1, _} when num1 == -1 or num1 == 0 -> false
+    _ -> true
+  end)
+)
 |> IO.inspect(label: "Part1: ")
 
 FileReader.part2(ops)
